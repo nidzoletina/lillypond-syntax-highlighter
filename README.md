@@ -65,13 +65,12 @@ You can author your README using Visual Studio Code. Here are some useful editor
 **Enjoy!**
 
 ## Supporting YAML:
+Install dyaml to json.
 ```
-# Install js-yaml as a development only dependency in your extension
-$ npm install js-yaml --save-dev
+npm install -g js-yaml-cli
+```
 
-# Use the command-line tool to convert the yaml grammar to json
-$ npx js-yaml syntaxes/abc.tmLanguage.yaml > syntaxes/abc.tmLanguage.json
+Convert file:
 ```
-```
-npx js-yaml .\syntaxes\lillypond.tmLanguage.yaml > .\syntaxes\lillypond.tmLanguage.json
+yaml2json .\syntaxes\lillypond.tmLanguage.yaml
 ```

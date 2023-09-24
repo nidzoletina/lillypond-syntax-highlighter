@@ -1,50 +1,50 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "lillypond",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#comment"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [
-				{
-				"name": "keyword.control.lillypond",
-				"match": "\\\\(version|header|relative)"
-			}
-		]
-		},
-		"strings": {
-			"name": "string.quoted.double.lillypond",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.lillypond",
-					"match": "\\\\."
-				}
-			]
-		},
-		"comment": {
-			"patterns": [
-				{
-					"name": "comment.block",
-					"begin": "%{",
-					"end": "%}"
-				},
-				{
-					"name": "comment.line",
-					"match": "%.+"
-				}
-			]
-		}
-	},
-	"scopeName": "source.lillypond"
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "lillypond",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#comment"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.lillypond",
+          "match": "\\\\(version|header|relative)"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.lillypond",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.lillypond",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "comment": {
+      "patterns": [
+        {
+          "name": "comment.block",
+          "begin": "%{",
+          "end": "%}"
+        },
+        {
+          "name": "comment.line",
+          "match": "%.+"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.lillypond"
 }
