@@ -10,16 +10,28 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "lillypond",
-      "aliases": ["lillypond", "lillypond"],
-      "extensions": [".ly"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "lillypond",
-      "scopeName": "source.lillypond",
-      "path": "./syntaxes/lillypond.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "lillypond",
+        "aliases": [
+          "lillypond",
+          "lillypond"
+        ],
+        "extensions": [
+          ".ly"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "lillypond",
+        "scopeName": "source.lillypond",
+        "path": "./syntaxes/lillypond.tmLanguage.json"
+      }
+    ]
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
   }
 }

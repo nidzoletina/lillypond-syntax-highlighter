@@ -63,3 +63,15 @@ You can author your README using Visual Studio Code. Here are some useful editor
 * [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
 
 **Enjoy!**
+
+## Supporting YAML:
+```
+# Install js-yaml as a development only dependency in your extension
+$ npm install js-yaml --save-dev
+
+# Use the command-line tool to convert the yaml grammar to json
+$ npx js-yaml syntaxes/abc.tmLanguage.yaml > syntaxes/abc.tmLanguage.json
+```
+```
+npx js-yaml .\syntaxes\lillypond.tmLanguage.yaml > .\syntaxes\lillypond.tmLanguage.json
+```
