@@ -14,10 +14,12 @@
 	],
 	"repository": {
 		"keywords": {
-			"patterns": [{
+			"patterns": [
+				{
 				"name": "keyword.control.lillypond",
 				"match": "\\\\(version|header|relative)"
-			}]
+			}
+		]
 		},
 		"strings": {
 			"name": "string.quoted.double.lillypond",
