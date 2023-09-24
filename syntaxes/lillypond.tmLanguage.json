@@ -17,7 +17,7 @@
       "patterns": [
         {
           "name": "keyword.control.lillypond",
-          "match": "\\\\(version|header|relative)"
+          "match": "\\\\(version|header|relative|new|score|key|minor)"
         }
       ]
     },
