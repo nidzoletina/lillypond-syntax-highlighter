@@ -7,13 +7,16 @@
 		},
 		{
 			"include": "#strings"
+		},
+		{
+			"include": "#comment"
 		}
 	],
 	"repository": {
 		"keywords": {
 			"patterns": [{
 				"name": "keyword.control.lillypond",
-				"match": "\\b(if|while|for|return)\\b"
+				"match": "\\\\(version|header|relative)"
 			}]
 		},
 		"strings": {
@@ -24,6 +27,19 @@
 				{
 					"name": "constant.character.escape.lillypond",
 					"match": "\\\\."
+				}
+			]
+		},
+		"comment": {
+			"patterns": [
+				{
+					"name": "comment.block",
+					"begin": "%{",
+					"end": "%}"
+				},
+				{
+					"name": "comment.line",
+					"match": "%.+"
 				}
 			]
 		}
