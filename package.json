@@ -7,9 +7,17 @@
     "vscode": "^1.82.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Themes"
   ],
   "contributes": {
+    "themes": [
+      {
+        "label": "lillypond Dark",
+        "uiTheme": "vs-dark",
+        "path": "./themes/lillypond Dark-color-theme.json"
+      }
+    ],
     "languages": [
       {
         "id": "lillypond",
