@@ -34,7 +34,7 @@
               "match": "\\\\bar"
             },
             {
-              "name": "support.constant.note",
+              "name": "constant.character",
               "match": "[abcdefgh][.']?(\\d\\.?)?"
             },
             {
@@ -58,8 +58,17 @@
           "end": "}",
           "patterns": [
             {
-              "name": "property",
+              "name": "variable",
               "match": "\\b(title|subtitle)\\b ="
+            },
+            {
+              "name": "string.quoted.double.lillypond",
+              "begin": "\"",
+              "end": "\""
+            },
+            {
+              "name": "invalid",
+              "match": "."
             }
           ]
         },

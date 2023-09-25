@@ -22,7 +22,7 @@
             - name: keyword.control.lillypond
               match: \\bar
 
-            - name: support.constant.note
+            - name: constant.character
               match: "[abcdefgh][.']?(\\d\\.?)?"
 
             - name: support.constant.barCheck
@@ -39,8 +39,15 @@
           begin: \\header ?{
           end: "}"
           patterns:
-            - name: property
+            - name: variable
               match: "\\b(title|subtitle)\\b ="
+
+            - name: string.quoted.double.lillypond
+              begin: '"'
+              end: '"'
+
+            - name: invalid
+              match: .
 
         - name: keyword.control.lillypond
           match: \\(version)
