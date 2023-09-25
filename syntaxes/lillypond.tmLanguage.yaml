@@ -7,12 +7,38 @@
     - include: "#comment"
 
   repository:
+    entity:
+      patterns:
+        - name: property
+          begin: "{"
+          end: "}"
+
     keywords:
       patterns:
         - name: keyword.control.lillypond
-          match: \\(version|header|relative|new|score|key|minor)	
+          begin: \\relative ?{
+          end: "}"
+          patterns:
+            - name: support.constant.note
+              match: "[abcdefgh]"
+              settings: 
+                foreground: "#AA0000"
+
+            - name: support.constant.duration
+              match: "\\d"
+
+            - name: support.constant.barCheck
+              match: "\\|"
+
+        - name: keyword.control.lillypond
+          begin: \\header ?{
+          end: "}"
+          patterns:
+            - name: keyword.control.relative.lillypond
+              match: d
 
         # - name: keyword.operator
+        #  match: \\(version|header|relative|new|score|key|minor|clef)	
         #   match: =
 
     strings:
@@ -30,5 +56,7 @@
           end: "%}"
         - name: comment.line
           match: "%.+"
+
+
 
   scopeName: source.lillypond
