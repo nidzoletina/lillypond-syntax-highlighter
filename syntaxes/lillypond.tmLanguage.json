@@ -3,16 +3,38 @@
   "name": "lillypond",
   "patterns": [
     {
-      "include": "#keywords"
+      "include": "#comment"
     },
     {
       "include": "#strings"
     },
     {
-      "include": "#comment"
+      "include": "#keywords"
+    },
+    {
+      "include": "#invalid"
     }
   ],
   "repository": {
+    "invalid": {
+      "name": "invalid",
+      "match": "."
+    },
+    "strings": {
+      "name": "string.quoted.double.lillypond",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.lillypond",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "noteNames": {
+      "name": "constant.character",
+      "match": "(?x)\n  \\x20\n  (a|b|c|d|e|f|g)(is|es)?\n  (,|')?\n  (128|1|2|4|8|16|32|64)?\n  \\.?\n"
+    },
     "entity": {
       "patterns": [
         {
@@ -34,8 +56,10 @@
               "match": "\\\\bar"
             },
             {
-              "name": "constant.character",
-              "match": "[abcdefgh][.']?(\\d\\.?)?"
+              "include": "#noteNames"
+            },
+            {
+              "include": "#comment"
             },
             {
               "name": "support.constant.barCheck",
@@ -47,8 +71,7 @@
               "end": "\""
             },
             {
-              "name": "invalid",
-              "match": "."
+              "include": "#invalid"
             }
           ]
         },
@@ -65,27 +88,12 @@
               "name": "string.quoted.double.lillypond",
               "begin": "\"",
               "end": "\""
-            },
-            {
-              "name": "invalid",
-              "match": "."
             }
           ]
         },
         {
           "name": "keyword.control.lillypond",
           "match": "\\\\(version)"
-        }
-      ]
-    },
-    "strings": {
-      "name": "string.quoted.double.lillypond",
-      "begin": "\"",
-      "end": "\"",
-      "patterns": [
-        {
-          "name": "constant.character.escape.lillypond",
-          "match": "\\\\."
         }
       ]
     },
