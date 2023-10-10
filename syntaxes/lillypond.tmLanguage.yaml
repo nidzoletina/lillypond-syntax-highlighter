@@ -21,10 +21,16 @@
       match: >
         (?x)
           \x20
-          (a|b|c|d|e|f|g)(is|es)?
+          (a|b|c|d|e|f|g)(is|es|isis\eses)?
           (,|')?
           (128|1|2|4|8|16|32|64)?
           \.?
+
+      clef:
+        name: keyword
+        match: >
+          (?x)
+            \clef
 
     entity:
       patterns:
@@ -57,6 +63,8 @@
           begin: \\header ?{
           end: "}"
           patterns:
+            - include: "#comment"
+
             - name: variable
               match: "\\b(title|subtitle)\\b ="
 
