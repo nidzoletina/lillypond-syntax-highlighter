@@ -3,8 +3,11 @@
   name: lillypond
   patterns:
     - include: "#comment"
-    - include: "#strings"
+    - include: "#sections"
+    - include: "#expressions"
     - include: "#keywords"
+    - include: "#variable"
+    - include: "#strings"
     - include: "#invalid"
 
   repository:
@@ -12,17 +15,17 @@
       name: invalid
       match: .
 
-    strings:
-      name: strings
-      match:
+    # strings:
+    #   name: strings
+    #   match:
 
     noteNames:    
-      name: constant.character
+      name: support.constant.math
       match: >
         (?x)
           \x20
           (a|b|c|d|e|f|g)(is|es|isis\eses)?
-          (,|')?
+          (,{1,5}|'{1,5})?
           (128|1|2|4|8|16|32|64)?
           \.?
 
@@ -32,6 +35,27 @@
           (?x)
             \clef
 
+    keySignature:
+      name: keyword.operator.expression
+      match: >
+        (?x)
+          \\key
+          \x20(a|b|c|d|e|f|g)(is|es|isis\eses)?
+          \x20\\(major|minor)
+
+    expressions:
+      name: keyword.operator.expressions
+      patterns:
+        - include: "#expressionsWithNew"
+
+    expressionsWithNew:
+      name: keyword.operator.expression
+      match: \\new (Staff|TabStaff)
+
+    variable:
+      name: variable
+      match: \\?\b[a-zA-Z]+\b
+
     entity:
       patterns:
         - name: property
@@ -39,6 +63,14 @@
           end: "}"
 
     keywords:
+      name: keyword.control.lillypond
+      match: >
+        (?x)
+          \\key
+          |\\new
+          |\\set
+
+    sections:
       patterns:
         - name: keyword.control.lillypond
           begin: \\relative ?{
@@ -47,7 +79,9 @@
             - name: keyword.control.lillypond
               match: \\bar
 
-            - include: '#noteNames'
+            - include: "#keySignature"
+            - include: "#noteNames"
+            - include: "#keywords"
             - include: "#comment"
 
             - name: support.constant.barCheck

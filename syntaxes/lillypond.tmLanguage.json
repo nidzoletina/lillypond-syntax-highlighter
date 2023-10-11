@@ -6,10 +6,19 @@
       "include": "#comment"
     },
     {
-      "include": "#strings"
+      "include": "#sections"
+    },
+    {
+      "include": "#expressions"
     },
     {
       "include": "#keywords"
+    },
+    {
+      "include": "#variable"
+    },
+    {
+      "include": "#strings"
     },
     {
       "include": "#invalid"
@@ -20,24 +29,33 @@
       "name": "invalid",
       "match": "."
     },
-    "strings": {
-      "name": "string.quoted.double.lillypond",
-      "begin": "\"",
-      "end": "\"",
-      "patterns": [
-        {
-          "name": "constant.character.escape.lillypond",
-          "match": "\\\\."
-        }
-      ]
-    },
     "noteNames": {
-      "name": "constant.character",
-      "match": "(?x)\n  \\x20\n  (a|b|c|d|e|f|g)(is|es|isis\\eses)?\n  (,|')?\n  (128|1|2|4|8|16|32|64)?\n  \\.?\n",
+      "name": "support.constant.math",
+      "match": "(?x)\n  \\x20\n  (a|b|c|d|e|f|g)(is|es|isis\\eses)?\n  (,{1,5}|'{1,5})?\n  (128|1|2|4|8|16|32|64)?\n  \\.?\n",
       "clef": {
         "name": "keyword",
         "match": "(?x)\n  \\clef\n"
       }
+    },
+    "keySignature": {
+      "name": "keyword.operator.expression",
+      "match": "(?x)\n  \\\\key\n  \\x20(a|b|c|d|e|f|g)(is|es|isis\\eses)?\n  \\x20\\\\(major|minor)\n"
+    },
+    "expressions": {
+      "name": "keyword.operator.expressions",
+      "patterns": [
+        {
+          "include": "#expressionsWithNew"
+        }
+      ]
+    },
+    "expressionsWithNew": {
+      "name": "keyword.operator.expression",
+      "match": "\\\\new (Staff|TabStaff)"
+    },
+    "variable": {
+      "name": "variable",
+      "match": "\\\\?\\b[a-zA-Z]+\\b"
     },
     "entity": {
       "patterns": [
@@ -49,6 +67,10 @@
       ]
     },
     "keywords": {
+      "name": "keyword.control.lillypond",
+      "match": "(?x)\n  \\\\key\n  |\\\\new\n  |\\\\set\n"
+    },
+    "sections": {
       "patterns": [
         {
           "name": "keyword.control.lillypond",
@@ -60,7 +82,13 @@
               "match": "\\\\bar"
             },
             {
+              "include": "#keySignature"
+            },
+            {
               "include": "#noteNames"
+            },
+            {
+              "include": "#keywords"
             },
             {
               "include": "#comment"
@@ -101,6 +129,17 @@
         {
           "name": "keyword.control.lillypond",
           "match": "\\\\(version)"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.double.lillypond",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.lillypond",
+          "match": "\\\\."
         }
       ]
     },
